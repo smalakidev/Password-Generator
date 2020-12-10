@@ -90,7 +90,6 @@ var upperCasedCharacters = [
 
 
 
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -104,27 +103,42 @@ function generateOptions(){
 
   //prompt lowercase
   var lowerCase = confirm("do you want lower case?");
-  console.log(lowerCase);
 
-  //prompts uppsercase?
-  //var upperCase = 
+  console.log(lowerCase)
+
+
+  //prompts for uppsercase?
+  var upperCase = confirm("do you want upper case?");
+  console.log(upperCase)
 
   //var number =
 
   //var specialChar = 
 
 
-
-
-
+//create an obj with the vars
+var optionsObj = {
+  lower: lowerCase,
+  upper: upperCase,
+  joey: "HEY"
+}
+//This is called object dot notation//
+console.log(optionsObj.upper)
+//Whatever gets returned gets assigned to the variable
+return optionsObj;
   //return "hello";
 };
 
 
 function generatePassword(){
-  //this function will help create our password based on the users options
+  //this function will help create/generate our password based on the users options
   var options = generateOptions();
-
+//We are console.logging our options here//  
+console.log("THIS IS OUR OPTION OBJ")
+console.log(options)
+console.log(options.lower)
+console.log(options.upper)
+console.log(options.joey)
 
   //return options;
 }
