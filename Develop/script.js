@@ -90,14 +90,14 @@ var upperCasedCharacters = [
 
 
 
-// Assignment Code
+// Assignment Code. This will help in generating a button for the code.
 var generateBtn = document.querySelector("#generate");
 
 function generateOptions(){
   //this function will prompt user for password options
 
-  //write prompts for length
-  //var length =
+  //write prompts for length. This will show up on user's screen asking them about the length.
+  var passwordLength = prompt("Your code must be between 8 and 128 Characters long");
   //check IF length is < 8 , which means length is to small
   //check IF length is > 128, which mean length is too large
 
@@ -120,7 +120,7 @@ function generateOptions(){
 var optionsObj = {
   lower: lowerCase,
   upper: upperCase,
-  joey: "HEY"
+  
 }
 //This is called object dot notation//
 console.log(optionsObj.upper)
@@ -130,7 +130,13 @@ return optionsObj;
 };
 
 
-function generatePassword(){
+
+function generatePassword(lowerCase, upperCase){
+  console.log('Lowercase', lowerCase);
+  if(lowerCase === true) {
+    // get a random character from the lowercase array;
+    // take the lower array and concat it with a potentialCharacters array
+  }
   //this function will help create/generate our password based on the users options
   var options = generateOptions();
 //We are console.logging our options here//  
@@ -138,7 +144,7 @@ console.log("THIS IS OUR OPTION OBJ")
 console.log(options)
 console.log(options.lower)
 console.log(options.upper)
-console.log(options.joey)
+
 
   //return options;
 }
