@@ -1,5 +1,5 @@
 //This is for teh specialcharacters
-var specialCharacters = [
+var specialCharactersAr = [
   '@',
   '%',
   '+',
@@ -172,20 +172,68 @@ var options = generateOptions();
   console.log(options.upper)
   
   //This is for building up our password
-  var password = "" 
   
-  //We have to build an array of all possible 
-//Comine optins.lowercase, options.uppercase, options.numbers, and options.specialcharacters into a single array
-  var optionsOjb = ("lowerCase" + "upperCase" + "numbers" + "special Characters")
-  //This will run the code that is put into
-  for (i = 0; i<options.passwordLength; i++){
-   //Select a random element from options object(the result from line 197), concatanate it with password, and then 
-    password = password + "a"
-  if (options.lowerCase)
-  }
+  var password = [];
+
+
+  //all character types to be used stored in here
+  var charTypes = [];
+
+  //one of each character type 
+  var guranteechar = [];
+
+console.log("before", charTypes)
+//These if conditionals ensure that every possible type of character and number from previous arrays are put in here to create an even larger array of possible characters and numbers 
+//for our random password.
+if(options.lower){
+
+ charTypes = charTypes.concat(lowerCasedCharacters);
+ 
+};
+
+if(options.numbers){
   
-  return password
-}
+ charTypes = charTypes.concat(numericCharacters);
+ 
+};
+
+if(options.specialCharacters){
+  
+  charTypes = charTypes.concat(specialCharactersAr);
+  
+ };
+
+ if(options.upper){
+  
+  charTypes = charTypes.concat(upperCasedCharacters);
+  
+ };
+
+
+console.log("after",charTypes)
+
+
+
+
+  
+  //We have to build an array of all possible options
+//Comine opti0ns.lowercase, options.uppercase, options.numbers, and options.specialcharacters into a single array
+  
+//var optionsOjb = ("lowerCase" + "upperCase" + "numbers" + "special Characters")
+
+//Choices should not be Boolean. Use options.upper+options.lower+options.specialcharacters+options.numbers
+//console.log(choices);
+
+  //This will run the code that is put into the generator
+//   for (i = 0; i<options.passwordLength; i++){
+//    //Select a random element from options object concatanate it with password, and then 
+//     var character = choices[Math.floor(Math.random() * choices.length)];
+//     password = password + character;
+//     console.log('character: ', character);
+//     console.log('password:' , password);
+//   }
+//   return password
+ }
 
 
 
