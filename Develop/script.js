@@ -1,4 +1,4 @@
-
+//This is for teh specialcharacters
 var specialCharacters = [
   '@',
   '%',
@@ -84,69 +84,107 @@ var upperCasedCharacters = [
   'Y',
   'Z'
 ];
+// Puts all the possible characters for the password into the array
+var allCharacters = [];
 
 
 
 
-
-
-// Assignment Code. This will help in generating a button for the code.
+// Assignment Code. This will help in generating a password button and linking that password button with the HTML doc.
 var generateBtn = document.querySelector("#generate");
 
+  //this function begins here, and we are defining a function here, and it will prompt the user for password options 
 function generateOptions(){
-  //this function will prompt user for password options
 
-  //write prompts for length. This will show up on user's screen asking them about the length.
-  var passwordLength = prompt("Your code must be between 8 and 128 Characters long");
+
+  //write prompts for length. This will show up on user's screen asking them about how long they want their password to be.
+  var passwordLength = parseInt(prompt("How many characters would you like for your password?"));
+
+
   //check IF length is < 8 , which means length is to small
   //check IF length is > 128, which mean length is too large
+  //NaN: means not a number. ParsInt-Converts strings into a number.
+  if (parseInt(passwordLength)===NaN) {
+    alert("You must have an entered number value ")
+    //If the password is less than 8 or it is less than 128 alert.....
+  } else if (passwordLength < 8 || passwordLength > 128) {
+    alert(" please choose number between 8 and 128 Characters!")
+  }
 
-  //prompt lowercase
-  var lowerCase = confirm("do you want lower case?");
 
-  console.log(lowerCase)
+  //prompt lowercase. This confirm is a Boolean.
+  var lowerCase = confirm("Do you want a lower case letter in your password?");
+
+  console.log(lowerCase);
 
 
   //prompts for uppsercase?
-  var upperCase = confirm("do you want upper case?");
-  console.log(upperCase)
+  var upperCase = confirm("Do you want a upper case letter your password?");
+  console.log(upperCase);
 
-  //var number =
+  //Prompts for numbers? T
 
-  //var specialChar = 
+  var numbers = confirm("Do you want numbers in your password?");
+  console.log(numbers);
 
+  //Prompts for special characters?
 
-//create an obj with the vars
-var optionsObj = {
-  lower: lowerCase,
-  upper: upperCase,
+  var specialCharacters = confirm("Would you like special characters in your password?");
+  console.log(specialCharacters);
+
+  //This if statement allows us to tell the user to select a password criteria if they fail to choose any given options
+  if (!lowerCase && !upperCase && !specialCharacters && !numbers) {
+        alert("You must pick at least one of the criteria!!");
+        //The purpose of return is to show the final answer, terminate the fuction and not execute any more code. 
+        //Normally return comes at the end of a function
+        return;
+
+  }
+
+  //create an obj with the vars. These are known as key values pairs. The key is how you access it and the value is what you get back after you access it.
+  //The arrays are grouped together into this logical construct or a bucket.
+  var optionsObj = {
+    lower: lowerCase,
+    upper: upperCase,
+    numbers: numbers,
+    specialCharacters: specialCharacters,
+    passwordLength: passwordLength,
   
-}
-//This is called object dot notation//
-console.log(optionsObj.upper)
+  }
+
+
+  //This is called object dot notation//
+  console.log(optionsObj.upper)
 //Whatever gets returned gets assigned to the variable
-return optionsObj;
-  //return "hello";
+  return optionsObj;
+//the function is a long one and ends here
 };
 
+function generatePassword(){
 
 
-function generatePassword(lowerCase, upperCase){
-  console.log('Lowercase', lowerCase);
-  if(lowerCase === true) {
-    // get a random character from the lowercase array;
-    // take the lower array and concat it with a potentialCharacters array
+  //Get all the options that we have available to create the password. We are taking from 146 and putting it into 166.
+var options = generateOptions();
+ //We are console.logging our options here//  
+  console.log("THIS IS OUR OPTION OBJ")
+  console.log(options)
+  console.log(options.lower)
+  console.log(options.upper)
+  
+  //This is for building up our password
+  var password = "" 
+  
+  //We have to build an array of all possible 
+//Comine optins.lowercase, options.uppercase, options.numbers, and options.specialcharacters into a single array
+  var optionsOjb = ("lowerCase" + "upperCase" + "numbers" + "special Characters")
+  //This will run the code that is put into
+  for (i = 0; i<options.passwordLength; i++){
+   //Select a random element from options object(the result from line 197), concatanate it with password, and then 
+    password = password + "a"
+  if (options.lowerCase)
   }
-  //this function will help create/generate our password based on the users options
-  var options = generateOptions();
-//We are console.logging our options here//  
-console.log("THIS IS OUR OPTION OBJ")
-console.log(options)
-console.log(options.lower)
-console.log(options.upper)
-
-
-  //return options;
+  
+  return password
 }
 
 
