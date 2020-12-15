@@ -115,22 +115,22 @@ function generateOptions(){
   //prompt lowercase. This confirm is a Boolean.
   var lowerCase = confirm("Do you want a lower case letter in your password?");
 
-  console.log(lowerCase);
+  // console.log(lowerCase);
 
 
   //prompts for uppsercase?
   var upperCase = confirm("Do you want a upper case letter your password?");
-  console.log(upperCase);
+  // console.log(upperCase);
 
   //Prompts for numbers? T
 
   var numbers = confirm("Do you want numbers in your password?");
-  console.log(numbers);
+  // console.log(numbers);
 
   //Prompts for special characters?
 
   var specialCharacters = confirm("Would you like special characters in your password?");
-  console.log(specialCharacters);
+  // console.log(specialCharacters);
 
   //This if statement allows us to tell the user to select a password criteria if they fail to choose any given options
   if (!lowerCase && !upperCase && !specialCharacters && !numbers) {
@@ -154,7 +154,7 @@ function generateOptions(){
 
 
   //This is called object dot notation//
-  console.log(optionsObj.upper)
+  // console.log(optionsObj.upper)
 //Whatever gets returned gets assigned to the variable
   return optionsObj;
 //the function is a long one and ends here
@@ -168,8 +168,7 @@ var options = generateOptions();
  //We are console.logging our options here//  
   console.log("THIS IS OUR OPTION OBJ")
   console.log(options)
-  console.log(options.lower)
-  console.log(options.upper)
+
   
   //This is for building up our password
   
@@ -188,54 +187,87 @@ console.log("before", charTypes)
 if(options.lower){
 
  charTypes = charTypes.concat(lowerCasedCharacters);
+ //generate a random nuumber
+ var randomNum = Math.floor(Math.random() * lowerCasedCharacters.length);
+//use that number to indicate index positionb
+ var letter = lowerCasedCharacters[randomNum];
+
+ console.log(letter, randomNum)
+
+ guranteechar.push(letter);
+
+
  
 };
+
+
+
 
 if(options.numbers){
   
  charTypes = charTypes.concat(numericCharacters);
- 
+ //generate a random nuumber
+ var randomNum = Math.floor(Math.random() * numericCharacters.length);
+//use that number to indicate index positionb
+ var letter = numericCharacters[randomNum];
+ guranteechar.push(letter);
 };
+
 
 if(options.specialCharacters){
   
   charTypes = charTypes.concat(specialCharactersAr);
-  
+   //generate a random nuumber
+ var randomNum = Math.floor(Math.random() * specialCharactersAr.length);
+ //use that number to indicate index positionb
+  var letter = specialCharactersAr[randomNum];
+
+  guranteechar.push(letter);
  };
 
  if(options.upper){
   
   charTypes = charTypes.concat(upperCasedCharacters);
+   //generate a random nuumber
+ var randomNum = Math.floor(Math.random() * upperCasedCharacters.length);
+ //use that number to indicate index positionb
+  var letter = upperCasedCharacters[randomNum];
+  guranteechar.push(letter);
   
  };
 
 
 console.log("after",charTypes)
+console.log(guranteechar)
 
 
 
+//pick random items from charType array based on length
+for (var i = 0; i < options.passwordLength; i++) {
+
+  var num = Math.floor(Math.random() * charTypes.length);
+
+  console.log(num, charTypes[num])
+
+  password.push(charTypes[num])
 
   
-  //We have to build an array of all possible options
-//Comine opti0ns.lowercase, options.uppercase, options.numbers, and options.specialcharacters into a single array
+};
+
+
+
+console.log("password Before", password)
+
+for (let i = 0; i < guranteechar.length; i++) {
+  console.log(password[i])
+  password[i] = guranteechar[i]
+  console.log(password)
+}
+
+
+return password.join("");
   
-//var optionsOjb = ("lowerCase" + "upperCase" + "numbers" + "special Characters")
-
-//Choices should not be Boolean. Use options.upper+options.lower+options.specialcharacters+options.numbers
-//console.log(choices);
-
-  //This will run the code that is put into the generator
-//   for (i = 0; i<options.passwordLength; i++){
-//    //Select a random element from options object concatanate it with password, and then 
-//     var character = choices[Math.floor(Math.random() * choices.length)];
-//     password = password + character;
-//     console.log('character: ', character);
-//     console.log('password:' , password);
-//   }
-//   return password
- }
-
-
+};
 
 // Write password to the #password input
 function writePassword() {
